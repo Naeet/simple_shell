@@ -5,12 +5,14 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
+
 #include <sys/wait.h>
 #include <string.h>
 
 #define READ_SIZE 1024
 extern char **environ;
 
+void _putchar(const char *string);
 void display_prompt(void);
 char *my_getline(void);
 void execute_command(char *command);
