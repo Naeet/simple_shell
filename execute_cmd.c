@@ -66,7 +66,7 @@ void execute_cd(char *token)
 		token = getenv("HOME");
 	}
 	char *oldpwd;
-       
+
 	oldpwd = getenv("PWD");
 
 	if (oldpwd == NULL)
@@ -83,9 +83,7 @@ void execute_cd(char *token)
 		char *newpwd = getcwd(NULL, 0);
 
 		if (newpwd == NULL)
-		{
 			perror("getcwd error");
-		}
 		else
 		{
 			if (setenv("PWD", newpwd, 1) != 0)
