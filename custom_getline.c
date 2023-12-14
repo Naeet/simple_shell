@@ -6,8 +6,8 @@
  */
 char *my_getline(void)
 {
-	char buffer[READ_SIZE], *line = NULL;
-	size_t buffer_index = 0, line_size = 0;
+	char buffer[READ_SIZE], *line = NULL, *newline_pos;
+	size_t buffer_index = 0, line_size = 0, copy_chars;
 
 	while (1)
 	{
@@ -28,8 +28,8 @@ char *my_getline(void)
 			}
 			buffer_index = (size_t)read_chars;
 		}
-		char *newline_pos = memchr(buffer, '\n', buffer_index);
-		size_t copy_chars = (newline_pos != NULL)
+		newline_pos = memchr(buffer, '\n', buffer_index);
+		copy_chars = (newline_pos != NULL)
 			? (size_t)(newline_pos - buffer + 1) : buffer_index;
 
 		line = realloc(line, line_size + copy_chars);

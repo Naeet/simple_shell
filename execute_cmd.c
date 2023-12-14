@@ -59,14 +59,14 @@ void execute_unsetenv(void)
  */
 void execute_cd(char *token)
 {
+	char *oldpwd;
+
 	token = strtok(NULL, " \t\n");
 
 	if (!token)
 	{
 		token = getenv("HOME");
 	}
-	char *oldpwd;
-
 	oldpwd = getenv("PWD");
 
 	if (oldpwd == NULL)
