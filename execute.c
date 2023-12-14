@@ -83,8 +83,7 @@ void execute_other(char *token, int status)
 				find_and_execute_command(executable_path, args, &status);
 				free(executable_path);
 				return;
-			}
-			free(executable_path);
+			} free(executable_path);
 			dir = strtok(NULL, ":");
 		} _putchar("command not found\n");
 	}
