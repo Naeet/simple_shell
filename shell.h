@@ -24,6 +24,8 @@ void execute_cd(char *token);
 void execute_and(char *token, int status);
 void execute_env(void);
 void execute_other(char *token, int status);
+void find_and_execute_command(char *executable_path,
+		char *args[], int *status);
 void execute_command_in_child(char *executable_path, char *args[]);
 char *read_input(size_t *read_chars);
 char *process_buffer(char *buffer, size_t *buffer_index, size_t *line_size);
