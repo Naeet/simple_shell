@@ -13,10 +13,7 @@ void execute_exit(char *token)
 		status = _atoi(token);
 	}
 
-	if (status != 0)
-	{
 	_exit(status);
-	}
 }
 /**
  * execute_setenv - f
