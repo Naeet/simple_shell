@@ -6,7 +6,7 @@
  */
 char *my_getline(void)
 {
-	char buffer[READ_SIZE], *line = NULL, *newline_pos;
+	char buffer[READ_SIZE], *line = NULL, *newline_pos, *temp;
 	size_t buffer_index = 0, line_size = 0, copy_chars;
 
 	while (1)
@@ -28,17 +28,18 @@ char *my_getline(void)
 			}
 			buffer_index = (size_t)read_chars;
 		}
-		newline_pos = memchr(buffer, '\n', buffer_index);
+		newline_pos = _memchr(buffer, '\n', buffer_index);
 		copy_chars = (newline_pos != NULL)
 			? (size_t)(newline_pos - buffer + 1) : buffer_index;
 
-		line = realloc(line, line_size + copy_chars);
-		if (line == NULL)
+		temp = _realloc(line, line_size + copy_chars);
+		if (temp == NULL)
 		{
 			perror("realloc error");
 			exit(EXIT_FAILURE);
 		}
-		memcpy(line + line_size, buffer, copy_chars);
+		line = temp;
+		_memcpy(line + line_size, buffer, copy_chars);
 		buffer_index -= copy_chars;
 		line_size += copy_chars;
 		if (newline_pos != NULL)

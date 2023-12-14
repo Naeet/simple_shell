@@ -66,7 +66,7 @@ void execute_other(char *token, int status)
 	else
 	{
 		path = getenv("PATH");
-		strcpy(path_copy, path);
+		_strcpy(path_copy, path);
 		dir = strtok(path_copy, ":");
 		while (dir)
 		{
@@ -86,7 +86,7 @@ void execute_other(char *token, int status)
 			}
 			free(executable_path);
 			dir = strtok(NULL, ":");
-		} fprintf(stderr, "%s: command not found\n", args[0]);
+		} _putchar("command not found\n");
 	}
 }
 /**

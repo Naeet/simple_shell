@@ -17,14 +17,15 @@ int main(void)
 
 		if (input == NULL)
 		{
-			printf("\n");
+			_putchar("\n");
+			free(input);
 			break;
 		}
 		if (*input != '\0')
 		{
 			execute_command(input);
 		}
-		free(input);
+		free (input);
 	}
 	return (0);
 }

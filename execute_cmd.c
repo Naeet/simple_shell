@@ -10,9 +10,13 @@ void execute_exit(char *token)
 	token = strtok(NULL, " \t\n");
 	if (token)
 	{
-		status = atoi(token);
+		status = _atoi(token);
 	}
+
+	if (status != 0)
+	{
 	_exit(status);
+	}
 }
 /**
  * execute_setenv - f
@@ -24,7 +28,7 @@ void execute_setenv(void)
 
 	if (!var || !value)
 	{
-		fprintf(stderr, "Usage: setenv VARIABLE VALUE\n");
+		_putchar("Usage: setenv VARIABLE VALUE\n");
 	}
 	else
 	{
@@ -43,7 +47,7 @@ void execute_unsetenv(void)
 
 	if (!var)
 	{
-		fprintf(stderr, "Usage: unsetenv VARIABLE\n");
+		_putchar("Usage: unsetenv VARIABLE\n");
 	}
 	else
 	{
@@ -90,7 +94,9 @@ void execute_cd(char *token)
 			{
 				perror("setenv error");
 			}
-			printf("%s\n", newpwd);
+			/*
+			putchar(newpwd);
+			*/
 			free(newpwd);
 		}
 	}

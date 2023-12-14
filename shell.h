@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
+#include <stddef.h>
 
 #include <sys/wait.h>
 #include <string.h>
@@ -30,4 +31,12 @@ void execute_command_in_child(char *executable_path, char *args[]);
 char *read_input(size_t *read_chars);
 char *process_buffer(char *buffer, size_t *buffer_index, size_t *line_size);
 void execute_external(char *args[], int status);
+char *_memcpy(char *dest, char *src, unsigned int n);
+int _atoi(char *s);
+void *_memchr(const void *s, int c, size_t n);
+void *_realloc(void *ptr, size_t size);
+char *_getenv(const char *name);
+int _setenv(const char *name, const char *value, int overwrite);
+char *_strcpy(char *dest, char *src);
+
 #endif
