@@ -1,5 +1,4 @@
 #include "shell.h"
-char *command;
 /**
  * execute_env - f
  */
@@ -11,6 +10,34 @@ void execute_env(void)
 	{
 		printf("%s\n", *env);
 		env++;
+	}
+}
+/**
+ * execute_external - e
+ * @args: t
+ * @status: c
+ */
+void execute_external(char *args[], int status)
+{
+	pid_t child_pid = fork();
+
+	if (child_pid == -1)
+	{
+		perror("fork error");
+		exit(EXIT_FAILURE);
+	}
+	if (child_pid == 0)
+	{
+		if (execve(args[0], args, NULL) == -1)
+		{
+			perror("execve error");
+			exit(EXIT_FAILURE);
+		}
+	}
+	else
+	{
+		waitpid(child_pid, &status, 0);
+		return;
 	}
 }
 /**
@@ -34,9 +61,11 @@ void execute_other(char *token, int status)
 		}
 		args[i] = token;
 	}
-	path = getenv("PATH");
-	if (path)
+	if (strchr(args[0], '/'))
+		execute_external(args, status);
+	else
 	{
+		path = getenv("PATH");
 		strcpy(path_copy, path);
 		dir = strtok(path_copy, ":");
 		while (dir)
@@ -57,8 +86,8 @@ void execute_other(char *token, int status)
 			}
 			free(executable_path);
 			dir = strtok(NULL, ":");
-		}
-	}	fprintf(stderr, "%s: command not found\n", args[0]);
+		} fprintf(stderr, "%s: command not found\n", args[0]);
+	}
 }
 /**
  * find_and_execute_command - f
@@ -77,24 +106,15 @@ void find_and_execute_command(char *executable_path, char *args[], int *status)
 	}
 	if (child_pid == 0)
 	{
-		execute_command_in_child(executable_path, args);
+		if (execve(executable_path, args, NULL) == -1)
+		{
+			perror("execve error");
+			exit(EXIT_FAILURE);
+		}
 	}
 	else
 	{
 		waitpid(child_pid, status, 0);
-	}
-}
-/**
- * execute_command_in_child - f
- * @executable_path: c
- * @args: a
- */
-void execute_command_in_child(char *executable_path, char *args[])
-{
-	if (execve(executable_path, args, NULL) == -1)
-	{
-		perror("execve error");
-		exit(EXIT_FAILURE);
 	}
 }
 /**
