@@ -88,7 +88,6 @@ void find_and_execute_command(char *executable_path, char *args[], int *status)
  * execute_command_in_child - f
  * @executable_path: c
  * @args: a
- * @status: i
  */
 void execute_command_in_child(char *executable_path, char *args[])
 {
