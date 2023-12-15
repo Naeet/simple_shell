@@ -1,20 +1,22 @@
 #include "shell.h"
+/**
+ * execute_command - ex
+ * @command: ch
+ */
 void execute_command(char *command)
 {
 	pid_t child_pid;
-	int status;
+	int status, i;
 	char *token;
 	char *args[10];
 
 	token = strtok(command, " \t\n");
 
 	if (!token)
-	{
 		return;
-	}
 	args[0] = token;
 
-	for (int i = 1; i < 10; i++)
+	for (i = 1; i < 10; i++)
 	{
 		token = strtok(NULL, " \t\n");
 
@@ -42,7 +44,5 @@ void execute_command(char *command)
 		}
 	}
 	else
-	{
 		waitpid(child_pid, &status, 0);
-	}
 }

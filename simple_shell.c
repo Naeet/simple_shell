@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/**
+ * main - e
+ * @argc: a
+ * @argv: v
+ * Return: res
+ */
+
 int main(int argc, char *argv[])
 {
 	if (argc == 1)
@@ -13,7 +20,7 @@ int main(int argc, char *argv[])
 	else
 	{
 		fprintf(stderr, "Usage: %s [script]\n", argv[0]);
-		return EXIT_FAILURE;
+		return (EXIT_FAILURE);
 	}
-	return EXIT_SUCCESS;
+	return (EXIT_SUCCESS);
 }
