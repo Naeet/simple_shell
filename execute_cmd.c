@@ -2,20 +2,10 @@
 
 /**
  * execute_exit - e
- * @token: c
+ * @command: c
  */
 void execute_exit(char *command)
 {
-	/**
-	int status = 0;
-
-	token = strtok(NULL, " \t\n");
-	if (token)
-	{
-		status = _atoi(token);
-	}
-	exit(status);
-	*/
 	free(command);
 	exit(EXIT_SUCCESS);
 }
