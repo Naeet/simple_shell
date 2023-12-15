@@ -8,10 +8,11 @@
  */
 void *_realloc(void *ptr, size_t size)
 {
+	void *new_ptr;
 	if (ptr == NULL)
 		return (malloc(size));
 
-	void *new_ptr = malloc(size);
+	new_ptr = malloc(size);
 
 	if (new_ptr != NULL)
 	{
