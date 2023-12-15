@@ -32,6 +32,16 @@ void execute_command(char *command)
 
 	if (_strcmp(token, "exit") == 0)
 		execute_exit(token);
+	else if (strcmp(token, "setenv") == 0)
+		execute_setenv();
+	else if (strcmp(token, "unsetenv") == 0)
+		execute_unsetenv();
+	else if (strcmp(token, "cd") == 0)
+		execute_cd(token);
+	else if (strcmp(token, "&&") == 0)
+		execute_and(token, status);
+	else if (strcmp(token, "env") == 0)
+		execute_env();
 	else
 		execute_other(token, status);
 }

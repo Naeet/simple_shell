@@ -7,6 +7,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+extern char **environ;
+
 
 #include <string.h>
 #define MAX_INPUT_SIZE 1024
@@ -24,6 +26,13 @@ void *_memchr(const void *s, int c, size_t n);
 void *_realloc(void *ptr, size_t size);
 int _printf(const char *format, ...);
 int _strcmp(char *s1, char *s2);
+
+void execute_exit(char *token);
+void execute_setenv(void);
+void execute_unsetenv(void);
+void execute_cd(char *token);
+void execute_and(char *token, int status);
+void execute_env(void);
 
 #endif /* SHELL_H */
 
