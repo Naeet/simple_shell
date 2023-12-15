@@ -21,21 +21,21 @@ void execute_exit(char *token)
  */
 void execute_command(char *command)
 {
-	 int status = 0;
-	 char *token;
+	int status = 0;
+	char *token;
 
-	 token = strtok(command, " \t\n");
-	 if (!token)
-	 {
-		 return;
-	 }
+	token = strtok(command, " \t\n");
+	if (!token)
+	{
+		return;
+	}
 
-	 if (strcmp(token, "exit") == 0)
-		 execute_exit(token);
-	 else
-		 execute_other(token, status);
+	if (strcmp(token, "exit") == 0)
+		execute_exit(token);
+	else
+		execute_other(token, status);
 
-	  token = strtok(NULL, " \t\n");
+	token = strtok(NULL, " \t\n");
 }
 /**
  * execute_external - e
@@ -86,33 +86,32 @@ void execute_other(char *token, int status)
 		}
 		args[i] = token;
 	}
-	 if (strchr(args[0], '/'))
-		 execute_external(args, status);
-	 else
-	 {
-		 path = getenv("PATH");
-		 strcpy(path_copy, path);
-		 dir = strtok(path_copy, ":");
-		 while (dir)
-		 {
-			 char *executable_path = malloc(strlen(dir) + strlen(args[0]) + 2);
+	if (strchr(args[0], '/'))
+		execute_external(args, status);
+	else
+	{
+		path = getenv("PATH");
+		strcpy(path_copy, path);
+		dir = strtok(path_copy, ":");
+		while (dir)
+		{
+			char *executable_path = malloc(strlen(dir) + strlen(args[0]) + 2);
 
-			 if (!executable_path)
-			 {
-				 perror("malloc error");
-				 exit(EXIT_FAILURE);
-			 }
-			 sprintf(executable_path, "%s/%s", dir, args[0]);
-			 if (access(executable_path, X_OK) == 0)
-			 {
-				 find_and_execute_command(executable_path, args, &status);
-				 free(executable_path);
-				 return;
-			 }
-			 free(executable_path);
-			 dir = strtok(NULL, ":");
+			if (!executable_path)
+			{
+				perror("malloc error");
+				exit(EXIT_FAILURE);
+			}
+			sprintf(executable_path, "%s/%s", dir, args[0]);
+			if (access(executable_path, X_OK) == 0)
+			{
+				find_and_execute_command(executable_path, args, &status);
+				return;
+			}
+			free(executable_path);
+			dir = strtok(NULL, ":");
 		 } fprintf(stderr, "%s: command not found\n", args[0]);
-	 }
+	}
 }
 /**
  * find_and_execute_command - f
