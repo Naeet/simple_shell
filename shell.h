@@ -18,6 +18,12 @@ void find_and_execute_command(char *executable_path, char *args[], int *status);
 void execute_other(char *token, int status);
 void execute_external(char *args[], int status);
 void execute_exit(char *token);
+int _atoi(char *s);
+char *_memcpy(char *dest, char *src, unsigned int n);
+void *_memchr(const void *s, int c, size_t n);
+void *_realloc(void *ptr, size_t size);
+int _printf(const char *format, ...);
+int _strcmp(char *s1, char *s2);
 
 #endif /* SHELL_H */
 
