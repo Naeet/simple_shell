@@ -34,8 +34,6 @@ void execute_command(char *command)
 		execute_exit(token);
 	else
 		execute_other(token, status);
-/*
-	token = strtok(NULL, " \t\n");*/
 }
 /**
  * execute_external - e
