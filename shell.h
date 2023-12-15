@@ -14,7 +14,10 @@
 void display_prompt(void);
 char *read_input(void);
 void execute_command(char *command);
-void interactive_mode(void);
-void non_interactive_mode(char *script_path);
+void find_and_execute_command(char *executable_path, char *args[], int *status);
+void execute_other(char *token, int status);
+void execute_external(char *args[], int status);
+void execute_exit(char *token);
+
 #endif /* SHELL_H */
 
