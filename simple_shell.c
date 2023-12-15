@@ -12,7 +12,7 @@ int main(void)
 	{
 		display_prompt();
 
-		input = read_input();
+		input = _getline();
 
 		if (!input)
 		{
