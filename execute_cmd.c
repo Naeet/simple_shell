@@ -141,4 +141,9 @@ void find_and_execute_command(char *executable_path, char *args[], int *status)
 	{
 		waitpid(child_pid, status, 0);
 	}
+
+	if (executable_path != NULL)
+	{
+		free(executable_path);
+	}
 }
