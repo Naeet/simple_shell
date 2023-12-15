@@ -11,7 +11,7 @@ void execute_exit(char *token)
 	token = strtok(NULL, " \t\n");
 	if (token)
 	{
-		status = atoi(token);
+		status = _atoi(token);
 	}
 	_exit(status);
 }
@@ -30,7 +30,7 @@ void execute_command(char *command)
 		return;
 	}
 
-	if (strcmp(token, "exit") == 0)
+	if (_strcmp(token, "exit") == 0)
 		execute_exit(token);
 	else
 		execute_other(token, status);
