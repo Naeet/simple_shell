@@ -4,8 +4,9 @@
  * execute_exit - e
  * @token: c
  */
-void execute_exit(char *token)
+void execute_exit(char *command)
 {
+	/**
 	int status = 0;
 
 	token = strtok(NULL, " \t\n");
@@ -14,6 +15,9 @@ void execute_exit(char *token)
 		status = _atoi(token);
 	}
 	exit(status);
+	*/
+	free(command);
+	exit(EXIT_SUCCESS);
 }
 /**
  * execute_command - e
@@ -31,7 +35,7 @@ void execute_command(char *command)
 	}
 
 	if (_strcmp(token, "exit") == 0)
-		execute_exit(token);
+		execute_exit(command);
 	else if (strcmp(token, "setenv") == 0)
 		execute_setenv();
 	else if (strcmp(token, "unsetenv") == 0)

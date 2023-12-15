@@ -27,7 +27,7 @@ void *_realloc(void *ptr, size_t size);
 int _printf(const char *format, ...);
 int _strcmp(char *s1, char *s2);
 
-void execute_exit(char *token);
+void execute_exit(char *command);
 void execute_setenv(void);
 void execute_unsetenv(void);
 void execute_cd(char *token);
