@@ -4,6 +4,7 @@
  * @s: s
  * @c: int
  * @n: size_t
+ * Return: 1 or 0
  */
 void *_memchr(const void *s, int c, size_t n)
 {
@@ -13,7 +14,7 @@ void *_memchr(const void *s, int c, size_t n)
 	{
 		if (*p == (unsigned char)c)
 		{
-			return (void *)p;
+			return ((void *)p);
 		}
 		p++;
 	}

@@ -34,8 +34,8 @@ void execute_cd(char *token);
 void execute_and(char *token, int status);
 void execute_env(void);
 
-static void process_buffer(char *buffer, size_t *buffer_index, char **line, size_t *line_size);
-static void read_input(char buffer[], size_t *buffer_index);
+void process_buffer(char *buffer, size_t *buffer_index, char **line, size_t *line_size);
+void read_input_g(char buffer[], size_t *buffer_index);
 char *_getline(void);
 
 #endif /* SHELL_H */

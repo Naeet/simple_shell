@@ -1,6 +1,7 @@
 #include "shell.h"
 
-/**_memcpy - copy  memory with constant byte
+/**
+ * _memcpy - copy  memory with constant byte
  * @dest: destn
  * @src: source
  * @n: byte

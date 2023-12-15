@@ -3,14 +3,15 @@
  * _realloc - fun
  * @ptr: ptr
  * @size: size
+ * Return: ptr
  */
-void *custom_realloc(void *ptr, size_t size)
+void *_realloc(void *ptr, size_t size)
 {
 	void *new_ptr = malloc(size);
 
 	if (ptr == NULL)
 	{
-		return malloc((size));
+		return (malloc((size)));
 	}
 
 	if (new_ptr != NULL)

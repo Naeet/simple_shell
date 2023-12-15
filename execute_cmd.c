@@ -13,7 +13,7 @@ void execute_exit(char *token)
 	{
 		status = _atoi(token);
 	}
-	_exit(status);
+	exit(status);
 }
 /**
  * execute_command - e
