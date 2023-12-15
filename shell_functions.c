@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * interactive_mode - fun
- */
+ *
 void interactive_mode(void)
 {
 	char *input;
@@ -22,11 +22,11 @@ void interactive_mode(void)
 
 		free(input);
 	}
-}
+}**/
 /**
  * non_interactive_mode - f
  * @script_path: char
- */
+ *
 void non_interactive_mode(char *script_path)
 {
 	FILE *script = fopen(script_path, "r");
@@ -47,12 +47,17 @@ void non_interactive_mode(char *script_path)
 
 	free(input);
 }
+**/
 /**
  * display_prompt - f
  */
 void display_prompt(void)
 {
-	printf("nae$ ");
+	 if (isatty(STDIN_FILENO))
+	 {
+		 printf("nae$ ");
+		 fflush(stdout);
+	 }
 }
 /**
  * read_input - f

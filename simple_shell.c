@@ -6,7 +6,7 @@
  * @argv: v
  * Return: res
  */
-
+/**
 int main(int argc, char *argv[])
 {
 	if (argc == 1)
@@ -23,4 +23,28 @@ int main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
+}**/
+
+int main(void)
+{
+	char *input;
+
+	while (1)
+	{
+		display_prompt();
+
+		input = read_input();
+
+		if (!input)
+		{
+			free(input);
+			break;
+		}
+
+		execute_command(input);
+
+		free(input);
+	}
+
+	return (0);
 }
